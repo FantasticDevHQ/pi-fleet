@@ -1,12 +1,14 @@
 name: Repository checks
 on:
   pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
 permissions:
   contents: read
 jobs:
   check:
+    name: Repository quality gates
     runs-on: ubicloud-standard-2-ubuntu-2404
     timeout-minutes: 25
     env:
@@ -27,8 +29,6 @@ jobs:
       - run: node scripts/check.mjs
       - run: npm ci --prefix extensions/e2b
       - run: npm test --prefix extensions/e2b
-      - name: Real backend lifecycle and isolation
-        run: node --test --test-concurrency=1 scripts/worktree/worktree.integration.mjs
   upstream-toolkit:
     needs: check
     runs-on: ubicloud-standard-2-ubuntu-2404
@@ -47,3 +47,29 @@ jobs:
       - run: node scripts/check.mjs
         env:
           NODE_OPTIONS: --max-old-space-size=512
+  backend-isolation:
+    name: Real app backend isolation
+    needs: upstream-toolkit
+    if: ${{ always() }}
+    runs-on: ubicloud-standard-2-ubuntu-2404
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: --max-old-space-size=512
+    steps:
+      - name: Require completed quality and upstream checks
+        env:
+          UPSTREAM_RESULT: ${{ needs.upstream-toolkit.result }}
+        run: test "$UPSTREAM_RESULT" = success
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Runner identity
+        run: echo "${{ runner.name }} / ${{ runner.os }} / ${{ runner.arch }}"
+      - run: npm ci
+      - name: Real backend lifecycle and isolation
+        run: node --test --test-concurrency=1 scripts/worktree/worktree.integration.mjs

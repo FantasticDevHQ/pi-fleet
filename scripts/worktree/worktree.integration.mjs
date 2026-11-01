@@ -87,6 +87,9 @@ test(
         stdio: "ignore",
       });
       installDependencies(root);
+      const backendRoot = path.join(root, backendPath);
+      if (backendRoot !== root && existsSync(path.join(backendRoot, "package.json")))
+        installDependencies(backendRoot);
     }
     const setups = await Promise.allSettled(
       roots.map((root) => ok(root, "setup")),

@@ -47,3 +47,13 @@ canonical reference JibHQ/jib-factory fae094712705fc1baba55fb4b3cfaaef78041b3a.
 The metadata workflow activates when trusted files reach the base branch.
 Required-status protection must be configured separately by the owner after
 checking plan support; installing this workflow does not enable protection.
+
+Local adaptations to the pinned toolkit: clearer legacy-state recovery messages
+for nested backends, and locked nested-backend dependency installation when
+creating worktrees. The integration harness uses the same install layout.
+
+Required check names are `PR standard`, `Repository quality gates`, and
+`Real app backend isolation`. The backend job checks successful prerequisite
+completion before running real isolation work; a failed/canceled/skipped
+prerequisite cannot produce a passing isolation status. The coordinator manages
+base branch protection separately, after the trusted metadata status activates.

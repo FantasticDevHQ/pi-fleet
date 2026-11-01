@@ -232,7 +232,8 @@ test("bootstrap rejects matching legacy HOME state before starting Convex", asyn
   assert.equal(typeof lifecycleApi.assertBootstrapIsolation, "function");
   await assert.rejects(
     lifecycleApi.assertBootstrapIsolation(a, join(f.dir, "home")),
-    /legacy.*different worktree directory/i,
+    (error) => error.message.includes(legacy) &&
+      /backend directory name "a", not the worktree name/.test(error.message),
   );
 });
 

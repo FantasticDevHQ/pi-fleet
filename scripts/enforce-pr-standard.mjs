@@ -47,7 +47,7 @@ export async function enforcePullRequestStandard({ api, number, runUrl }) {
       if (previous || comments.length < 100) break;
     }
     const body = errors.length
-      ? `${marker}\n## PR standard failed\n\nThe PR metadata does not meet the standard. Correct these items:\n\n${errors.map((error) => `- ${error}`).join("\n")}\n\nEdit the PR title/description to rerun this check. See [the PR standard](https://github.com/kellykampen/pi-fleet/blob/main/docs/pull-request-standard.md). Evidence must describe actual verification; reviewers assess whether it proves the change.\n\n[Check run](${runUrl})`
+      ? `${marker}\n## PR standard failed\n\nThe PR metadata does not meet the standard. Correct these items:\n\n${errors.map((error) => `- ${error}`).join("\n")}\n\nEdit the PR title/description to rerun this check. See [the PR standard](https://github.com/FantasticDevHQ/pi-fleet/blob/main/docs/pull-request-standard.md). Evidence must describe actual verification; reviewers assess whether it proves the change.\n\n[Check run](${runUrl})`
       : `${marker}\n## PR standard passed\n\nThe title and Summary, What, Why, Evidence, and Agent sections meet the required format. UI changes include screenshot and/or video attachment references when required. Reviewers still assess correctness and evidence quality.\n\n[Check run](${runUrl})`;
     if (previous && previous.body !== body)
       await api("PATCH", `/issues/comments/${previous.id}`, { body });

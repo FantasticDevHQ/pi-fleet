@@ -91,6 +91,6 @@ export async function assertBootstrapIsolation(
   );
   if (existsSync(legacy))
     throw new Error(
-      "Matching legacy Convex state exists. Use a different worktree directory name; legacy data was not touched.",
+      `Matching legacy Convex state exists at ${legacy}. It is keyed by the backend directory name "${path.basename(projectRoot)}", not the worktree name. Explicitly back up and relocate that legacy state before setup; legacy data was not touched.`,
     );
 }

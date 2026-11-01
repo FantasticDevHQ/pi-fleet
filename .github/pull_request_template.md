@@ -51,5 +51,5 @@ Only record known values. For a human-only PR, identify the author and use
 ## Acceptance checklist
 
 - [ ] Linked ticket acceptance criteria are satisfied.
-- [ ] `pnpm run check:all` passed on the current changes.
+- [ ] `npm run check:all` passed on the current changes.
 - [ ] Evidence above covers the affected behavior and any verification limitations.

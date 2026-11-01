@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { root, script, read } from "./context.mjs";
@@ -35,6 +36,9 @@ try {
       if (!prepare) {
         const targetLayout = await read(path.join(target, "scripts/worktree.config.json"), {});
         installDependencies(target, { allowEmpty: targetLayout.convex === false });
+        const targetBackend = path.join(target, targetLayout.backend || ".");
+        if (targetBackend !== target && existsSync(path.join(targetBackend, "package.json")))
+          installDependencies(targetBackend);
       }
       execFileSync(
         process.execPath,
