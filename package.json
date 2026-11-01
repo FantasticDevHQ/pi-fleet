@@ -1,7 +1,6 @@
 {
   "name": "pi-fleet-repository-tools",
   "private": true,
-  "type": "module",
   "scripts": {
     "check:all": "node scripts/check.mjs",
     "worktree:setup": "node scripts/worktree/cli.mjs setup",
