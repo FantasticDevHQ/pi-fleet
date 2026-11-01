@@ -1,5 +1,13 @@
 # pi-fleet
 
+[![Fantastic.Dev](assets/fantastic-dev-badge.svg)](https://fantastic.dev)
+
+[A Fantastic.Dev Project](https://fantastic.dev)
+
+![Fantastic.Dev logo](assets/fantastic-dev-logo.svg)
+
+See [development and worktrees](docs/development.md) and [PR standards](docs/pull-request-standard.md).
+
 **A fleet of restricted, single-purpose AI coding agents you launch from the terminal.**
 
 pi-fleet turns the [Pi coding agent](https://pi.dev) into a set of reusable agent **"seats"** — each
