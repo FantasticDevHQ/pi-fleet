@@ -16,6 +16,8 @@ Validator regression tests passed: https://github.com/FantasticDevHQ/convex-work
 ## Agent
 - Agent: Codex
 - Session/thread ID: fixture-session-123
+## Acceptance checklist
+- [ ] Linked acceptance criteria verified.
 `;
 
 test("accepts conventional types, optional scopes and breaking-change markers", () => {
@@ -321,4 +323,9 @@ test("accepts CRLF and lone CR bodies including linkage after fenced examples", 
 
 test("official README brand assets alone do not imply application UI changes", () => {
   assert.deepEqual(validatePullRequest({ title, body }, ["assets/fantastic-dev-logo.svg", "assets/fantastic-dev-badge.svg"]), []);
+});
+
+test("requires the acceptance checklist after Agent with real checkbox items", () => {
+  assert.ok(validatePullRequest({ title, body: body.replace("## Acceptance checklist", "## Other") }).length);
+  assert.ok(validatePullRequest({ title, body: body.replace("- [ ] Linked acceptance criteria verified.", "Plain prose") }).length);
 });

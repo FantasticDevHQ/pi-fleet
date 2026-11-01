@@ -29,7 +29,7 @@ test("metadata workflow grants the API permissions its enforcer requires", async
 
 const valid = {
   title: "ci: FANT-65 enforce PR standards",
-  body: "## Summary\nRequire PR context.\nRefs FANT-65\n## What\nValidate metadata.\n## Why\nReduce incomplete reviews.\n## Evidence\nUI changes: No\n```text\n6 tests passed\n```\n## Agent\n- Agent: Codex\n- Session/thread ID: session-123",
+  body: "## Summary\nRequire PR context.\nRefs FANT-65\n## What\nValidate metadata.\n## Why\nReduce incomplete reviews.\n## Evidence\nUI changes: No\n```text\n6 tests passed\n```\n## Agent\n- Agent: Codex\n- Session/thread ID: session-123\n## Acceptance checklist\n- [ ] Ticket criteria verified.",
   state: "open",
   head: { sha: "abc123" },
 };

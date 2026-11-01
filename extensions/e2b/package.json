@@ -10,7 +10,8 @@
     "test": "tsx --test --test-concurrency=1 *.test.ts"
   },
   "dependencies": {
-    "e2b": "^2.32.0"
+    "e2b": "^2.32.0",
+    "convex": "1.42.1"
   },
   "devDependencies": {
     "@e2b/cli": "^2.13.1",

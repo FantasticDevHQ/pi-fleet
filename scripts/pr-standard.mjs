@@ -1,4 +1,4 @@
-const sections = ["Summary", "What", "Why", "Evidence", "Agent"];
+const sections = ["Summary", "What", "Why", "Evidence", "Agent", "Acceptance checklist"];
 const titlePattern =
   /^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9][a-z0-9./-]*\))?!?: [A-Z][A-Z0-9]+-[1-9]\d* \S.*$/;
 
@@ -196,6 +196,8 @@ export function validatePullRequest({ title = "", body = "" }, files = []) {
       errors.push(
         "In `## Evidence`, include an HTTPS proof link accessible to reviewers or fenced test/log/API output, with the result and what it demonstrates. Local paths and promises to verify later do not count.",
       );
+    if (matches.length === 1 && name === "Acceptance checklist" && !/^\s*[-*] \[[ xX]\] \S/m.test(matches[0].text))
+      errors.push("Include acceptance criteria as Markdown checkboxes in `## Acceptance checklist`.");
     if (matches.length === 1 && name === "Agent")
       errors.push(...agentErrors(matches[0].text));
     if (matches.length === 1 && name === "Summary")
@@ -207,6 +209,6 @@ export function validatePullRequest({ title = "", body = "" }, files = []) {
     found.length === sections.length &&
     found.map((section) => section.name).join() !== sections.join()
   )
-    errors.push("Order the sections: Summary, What, Why, Evidence, Agent.");
+    errors.push("Order the sections: Summary, What, Why, Evidence, Agent, Acceptance checklist.");
   return errors;
 }

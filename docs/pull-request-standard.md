@@ -140,3 +140,8 @@ Verify the actual job's labels, runner name/ID and terminal result through the
 Actions jobs API before describing it as a successful UbiCloud run. Metadata
 validation keeps its existing permissions, five-minute bound and trusted-code
 checkout; it never runs a PR's untrusted head with write permissions.
+
+The five narrative sections must be followed by exactly one `## Acceptance checklist`
+section containing Markdown checkbox items. Official README-only branding at
+`assets/fantastic-dev-logo.svg` and `assets/fantastic-dev-badge.svg` does not count
+as an application UI change; all other UI asset detection remains enforced.
