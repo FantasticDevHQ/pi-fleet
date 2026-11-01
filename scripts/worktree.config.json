@@ -1,0 +1,8 @@
+{
+  "backend": "extensions/e2b",
+  "frontend": ".",
+  "env": {},
+  "secretEnv": [],
+  "siteUrlEnv": [],
+  "bootstrapMissingEnv": []
+}

@@ -10,3 +10,11 @@ extensions/*/node_modules/
 .worktrees/
 *.log
 .DS_Store
+
+# Checkout-owned anonymous development state
+.worktree/
+.convex/
+**/.convex/
+.env.local
+**/.env.local
+extensions/e2b/convex/_generated/
