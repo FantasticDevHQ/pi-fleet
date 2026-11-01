@@ -135,12 +135,11 @@ test("requires a reviewer-accessible proof link or pasted output", () => {
     }),
     [],
   );
-  assert.deepEqual(
+  assert.ok(
     validatePullRequest({
       title,
       body: `${body}\n## Acceptance checklist\n- [x] Verified`,
-    }),
-    [],
+    }).some((error) => error.includes("exactly one `## Acceptance checklist`")),
   );
 });
 
