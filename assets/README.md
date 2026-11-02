@@ -2,6 +2,8 @@
 
 Use the compact badge to identify a Fantastic.Dev project. The generated SVG is vendored here so README rendering does not depend on access to the brand-kit repository or a live badge request.
 
+The root README demonstrates the approved centered header with the official logo, attribution, website and social links. Use the compact badge below when space is limited. Keep Fantastic green/charcoal on brand buttons and default Shields colors on project-fact badges.
+
 ## Reuse in another repository
 
 Copy `fantastic-dev-badge.svg` and `fantastic-dev-logo.svg` into that repository's `assets/` directory, then paste this Markdown into its root README:
@@ -9,7 +11,7 @@ Copy `fantastic-dev-badge.svg` and `fantastic-dev-logo.svg` into that repository
 ```markdown
 [![Fantastic.Dev](assets/fantastic-dev-badge.svg)](https://fantastic.dev)
 
-[A Fantastic.Dev Project](https://fantastic.dev)
+A [Fantastic.Dev](https://fantastic.dev) Project
 ```
 
 For a README in another directory, adjust the relative image path. Keep the link to `https://fantastic.dev` and the project note as written.
@@ -17,8 +19,10 @@ For a README in another directory, adjust the relative image path. Keep the link
 If the project is MIT-licensed and has a root `LICENSE` file, this optional row adds a matching license badge:
 
 ```markdown
-[![Fantastic.Dev](assets/fantastic-dev-badge.svg)](https://fantastic.dev) [![MIT license](https://img.shields.io/badge/license-MIT-94C173?style=flat-square&labelColor=0c0e13)](LICENSE)
+[![Fantastic.Dev](assets/fantastic-dev-badge.svg)](https://fantastic.dev) [![MIT license](https://img.shields.io/github/license/FantasticDevHQ/pi-fleet?style=flat-square)](LICENSE)
 ```
+
+Replace `FantasticDevHQ/pi-fleet` with the target repository in its live license badge URL.
 
 ## Source and appearance
 
