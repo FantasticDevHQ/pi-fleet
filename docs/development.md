@@ -40,9 +40,11 @@ Toolkit provenance: FantasticDevHQ/convex-worktrees at
 52c0b76d960a98afedd48607d6737bc14a954c1e, installed with install.mjs.
 All exported lifecycle modules/tests and scripts/worktree/LICENSE are retained.
 The integration RPC adapter uses this repository's existing jobs API.
-PR standards import the canonical workflow/template and reconcile validator fixes
-from the toolkit (CR/LF normalization and best-effort terminal failure status);
-canonical reference JibHQ/jib-factory fae094712705fc1baba55fb4b3cfaaef78041b3a.
+PR standards follow the canonical FantasticDevHQ/oss-standards workflow and
+validator (CR/LF normalization, best-effort terminal failure status, per-commit
+ticket or GitHub issue references), plus this repository's acceptance-checklist
+and README-brand-asset rules. The PR template is the organization default from
+FantasticDevHQ/.github; this repository keeps no local copy.
 
 The metadata workflow activates when trusted files reach the base branch.
 Required-status protection must be configured separately by the owner after

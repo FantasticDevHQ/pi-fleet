@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <a href="#quick-start">Quick start</a> · <a href="#the-profiles">Profiles</a> · <a href="docs/development.md">Development</a>
+  <a href="#quick-start">Quick start</a> · <a href="#the-profiles">Profiles</a> · <a href="docs/development.md">Development</a> · <a href="#contributing">Contributing</a>
 </p>
 
 ---
@@ -680,3 +680,27 @@ e2b_status({ sandboxId: "<e2b-sandbox-id>" })
 e2b_logs({ sandboxId: "<e2b-sandbox-id>" })
 # The live result/log data rehydrates a local job record where possible.
 ```
+
+## Contributing
+
+Contributions are welcome. Read the
+[contributing guide](https://github.com/FantasticDevHQ/.github/blob/main/CONTRIBUTING.md)
+and [Code of Conduct](https://github.com/FantasticDevHQ/.github/blob/main/CODE_OF_CONDUCT.md),
+and report vulnerabilities privately as described in the
+[security policy](https://github.com/FantasticDevHQ/.github/blob/main/SECURITY.md).
+
+Source development needs Node.js 22+ and npm with the committed lockfiles.
+
+```sh
+npm ci && npm ci --prefix extensions/e2b
+npm run check:all                # PR standard, worktree and eval tests, run serially
+npm test --prefix extensions/e2b # E2B extension tests
+```
+
+Never run `setup.sh` as a worktree setup step: it installs global Pi
+configuration. See [docs/development.md](docs/development.md) for the full
+workflow. Pull requests follow the [PR standard](docs/pull-request-standard.md).
+
+## License
+
+[MIT](LICENSE)
